@@ -1,0 +1,41 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FelicaLib"
+        xmlns:lvc ="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        x:Class="FericaReader.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="Button1" Content="Ferica読込" HorizontalAlignment="Left" Height="24" Margin="691,385,0,0" VerticalAlignment="Top" Width="91" Click="Button1_Click"/>
+        <Label x:Name="LabelResult" Content="読込結果" HorizontalAlignment="Left" Height="24" Margin="596,385,0,0" VerticalAlignment="Top" Width="89" Background="Black" Foreground="White" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <DataGrid x:Name="DataGridResult" HorizontalAlignment="Left" Height="160" VerticalAlignment="Top" Width="568" Margin="10,30,0,0"/>
+        <TextBox x:Name="TextBoxCalcValue" HorizontalAlignment="Left" Height="160" Margin="596,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" HorizontalScrollBarVisibility="Auto"/>
+        <Button x:Name="ButtonCreateTestDB" Content="テストDB作成" HorizontalAlignment="Left" Height="28" Margin="596,220,0,0" VerticalAlignment="Top" Width="186" Click="ButtonCreateTestDB_Click"/>
+        <TextBox x:Name="TextBoxCreateNum" HorizontalAlignment="Left" Height="20" Margin="732,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <Label Content="作成レコード数" HorizontalAlignment="Left" Height="20" Margin="596,195,0,0" VerticalAlignment="Top" Width="74" Padding="0"/>
+        <Label Content="読込内容" HorizontalAlignment="Left" Height="20" Margin="596,10,0,0" VerticalAlignment="Top" Width="74" Padding="0"/>
+        <Label Content="DB表示" HorizontalAlignment="Left" Height="20" Margin="11,8,0,0" VerticalAlignment="Top" Width="74" Padding="0"/>
+        <Button x:Name="ButtonWeekly" Content="週集計(2019.11)" HorizontalAlignment="Left" Height="25" Margin="596,253,0,0" VerticalAlignment="Top" Width="186" Click="ButtonWeekly_Click"/>
+
+        <DockPanel x:Name="DockPanelChart" HorizontalAlignment="Left" Height="214" LastChildFill="False" Margin="11,195,0,0" VerticalAlignment="Top" Width="567" Background="#FFFF9145">
+            <lvc:CartesianChart x:Name="RankGraph" Series="{Binding seriesCollection}" Width="566" Background="#FF2C0000">
+                <lvc:CartesianChart.AxisX>
+                    <lvc:Axis LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                </lvc:CartesianChart.AxisX>
+            </lvc:CartesianChart>
+        </DockPanel>
+
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="55" Margin="596,325,0,0" VerticalAlignment="Top" Width="186">
+            <DockPanel HorizontalAlignment="Center" Height="53" Margin="0" VerticalAlignment="Center" Width="186" LastChildFill="False">
+                <Label Content="プロセス別検索" HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="72" Padding="0" DockPanel.Dock="Top" Margin="9,3,0,0"/>
+                <ComboBox x:Name="ComboProcess" HorizontalAlignment="Left" Margin="20,-20,0,0" VerticalAlignment="Top" Width="80" DockPanel.Dock="Right"/>
+                <Button x:Name="ButtonViewDB" Content="DB読込表示" HorizontalAlignment="Left" Height="25" Margin="10,0,-98,3" VerticalAlignment="Top" Width="166" Click="ButtonViewDB_Click" DockPanel.Dock="Bottom"/>
+            </DockPanel>
+        </Border>
+        <Button x:Name="ButtonMakeChart" Content="Graph作成" HorizontalAlignment="Left" Height="25" Margin="596,295,0,0" VerticalAlignment="Top" Width="186" Click="ButtonMakeChart_Click"/>
+
+    </Grid>
+</Window>
