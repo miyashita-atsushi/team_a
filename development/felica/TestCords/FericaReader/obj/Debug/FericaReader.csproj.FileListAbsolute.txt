@@ -1,0 +1,5 @@
+C:\Users\takeshi\source\repos\TestCords\FericaReader\obj\Debug\MainWindow.g.cs
+C:\Users\takeshi\source\repos\TestCords\FericaReader\obj\Debug\App.g.cs
+C:\Users\takeshi\source\repos\TestCords\FericaReader\obj\Debug\FericaReader_Content.g.cs
+C:\Users\takeshi\source\repos\TestCords\FericaReader\obj\Debug\FericaReader_MarkupCompile.cache
+C:\Users\takeshi\source\repos\TestCords\FericaReader\obj\Debug\FericaReader_MarkupCompile.lref

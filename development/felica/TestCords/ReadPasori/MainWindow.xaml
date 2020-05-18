@@ -1,0 +1,19 @@
+﻿<Window x:Class="ReadPasori.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReadPasori"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="buttonCheckReader" Content="ReaderConnection" HorizontalAlignment="Left" Height="35" Margin="29,29,0,0" VerticalAlignment="Top" Width="100" Click="ButtonCheckReader_Click"/>
+        <Button x:Name="button_ReadID" Content="Read ID" HorizontalAlignment="Left" Height="35" Margin="29,123,0,0" VerticalAlignment="Top" Width="100" Click="Button_ReadID_Click"/>
+        <Button x:Name="button_ReadCardType" Content="Read Card Type" HorizontalAlignment="Left" Height="35" Margin="29,170,0,0" VerticalAlignment="Top" Width="100" Click="Button_ReadCardType_Click"/>
+        <ComboBox x:Name="comboBox_CardReader" HorizontalAlignment="Left" Height="35" Margin="29,76,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ComboBox_CardReader_SelectionChanged"/>
+        <TextBox x:Name="textBox_Log" HorizontalAlignment="Left" Height="380" Margin="149,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="633"/>
+        <Button x:Name="Button_SuicaRead" Content="Suica 090F" HorizontalAlignment="Left" Height="35" Margin="29,220,0,0" VerticalAlignment="Top" Width="100" Click="Button_SuicaRead_Click"/>
+        <Button x:Name="Button_ServiceTest" Content="ServiceTest" HorizontalAlignment="Left" Height="35" Margin="29,269,0,0" VerticalAlignment="Top" Width="100" Click="Button_ServiceTest_Click"/>
+
+    </Grid>
+</Window>
