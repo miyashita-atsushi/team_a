@@ -1,0 +1,32 @@
+﻿<Window x:Class="TestCords.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestCords"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="Button1" Content="DB作成確認" HorizontalAlignment="Left" Margin="34,66,0,0" VerticalAlignment="Top" Width="74" Click="Button1_Click"/>
+        <Button x:Name="Button2" Content="DB表示" HorizontalAlignment="Left" Margin="113,66,0,0" VerticalAlignment="Top" Width="74" Click="Button2_Click"/>
+        <Button x:Name="Button3" Content="DB書き込み" HorizontalAlignment="Left" Margin="575,66,0,0" VerticalAlignment="Top" Width="74" Click="Button3_Click"/>
+        <DataGrid x:Name="DataGridTest" ItemsSource="{Binding Mode = OneWay}" IsReadOnly="true" HorizontalAlignment="Left" Height="267" Margin="34,119,0,0" VerticalAlignment="Top" Width="671">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="日時" Binding="{Binding 'date'}" Width="150"/>
+                <DataGridTextColumn Header="費目" Binding="{Binding 'type'}" Width="100"/>
+                <DataGridTextColumn Header="金額" Binding="{Binding 'money'}" Width="100"/>
+                <DataGridTextColumn Header="乗車" Binding="{Binding 'getonStation', TargetNullValue=''}" Width="100" />
+                <DataGridTextColumn Header="降車" Binding="{Binding 'getoffStation'}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="TextBoxType" HorizontalAlignment="Left" Height="23" Margin="295,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+        <TextBox x:Name="TextBoxMoney" HorizontalAlignment="Left" Height="23" Margin="365,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+        <Label Content="費目" HorizontalAlignment="Left" Margin="295,37,0,0" VerticalAlignment="Top"/>
+        <Label Content="金額" HorizontalAlignment="Left" Margin="365,37,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxGetonStation" HorizontalAlignment="Left" Height="23" Margin="435,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+        <Label Content="乗車" HorizontalAlignment="Left" Margin="435,37,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxGetoffStation" HorizontalAlignment="Left" Height="23" Margin="505,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65"/>
+        <Label Content="降車" HorizontalAlignment="Left" Margin="505,37,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
