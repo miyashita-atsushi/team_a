@@ -14,7 +14,6 @@ namespace FericaReader.IO
         public string   IDm         { get; set; }//IDm
         public DateTime FromDate    { get; set; }//集計開始日時
         public DateTime ToDate      { get; set; }//集計終了日時
-        public int      Value       { get; set; }//残高?
-
+        public int      Value       { get; set; }//残高
     }
 }
