@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FericaReader.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UserDBFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DB\UserHistory.sqlite</Value>
+    </Setting>
+    <Setting Name="ProcessDBFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DB\ProcessDB.sqlite</Value>
+    </Setting>
+    <Setting Name="CsvResultFolderName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CsvResult</Value>
+    </Setting>
+    <Setting Name="StationDBFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DB\StationDB.sqlite</Value>
+    </Setting>
+    <Setting Name="log4netConfigFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Properties\log4net.config</Value>
+    </Setting>
+    <Setting Name="LogLevel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DEBUG</Value>
+    </Setting>
+    <Setting Name="LogFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">samplelogger</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

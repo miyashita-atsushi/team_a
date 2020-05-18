@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<definitions name="SFCardFanDb"
+  targetNamespace="http://www.denno.net/SFCardFan/sfcardfandb.wsdl"
+  xmlns:tns="http://www.denno.net/SFCardFan/sfcardfandb.wsdl"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+  <xsd:schema targetNamespace="urn:SFCardFanDb">
+    <xsd:complexType name="getStationNameResult">
+      <xsd:sequence>
+        <xsd:element name="AreaCode" type="xsd:int" />
+        <xsd:element name="LineCode" type="xsd:int" />
+        <xsd:element name="StationCode" type="xsd:int" />
+        <xsd:element name="CompanyName" type="xsd:string" />
+        <xsd:element name="LineName" type="xsd:string" />
+        <xsd:element name="StationName" type="xsd:string" />
+        <xsd:element name="Note" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getShopNameResult">
+      <xsd:sequence>
+        <xsd:element name="AreaCode" type="xsd:int" />
+        <xsd:element name="TerminalCode" type="xsd:int" />
+        <xsd:element name="LineCode" type="xsd:int" />
+        <xsd:element name="StationCode" type="xsd:int" />
+        <xsd:element name="CompanyName" type="xsd:string" />
+        <xsd:element name="ShopName" type="xsd:string" />
+        <xsd:element name="Cashier" type="xsd:string" />
+        <xsd:element name="Note" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:schema>
+</types>
+
+<message name="getStationNameRequest">
+  <part name="AreaCode" type="xsd:int" />
+  <part name="LineCode" type="xsd:int" />
+  <part name="StationCode" type="xsd:int" />
+</message>
+<message name="getStationNameResponse">
+  <part name="ResultSet" type="tns:getStationNameResult" />
+</message>
+<message name="getShopNameRequest">
+  <part name="AreaCode" type="xsd:int" />
+  <part name="TerminalCode" type="xsd:int" />
+  <part name="LineCode" type="xsd:int" />
+  <part name="StationCode" type="xsd:int" />
+</message>
+<message name="getShopNameResponse">
+  <part name="ResultSet" type="tns:getShopNameResult" />
+</message>
+
+<portType name="SFCardFanDbPortType">
+  <operation name="getStationName" parameterOrder="AreaCode LineCode StationCode">
+    <input message="tns:getStationNameRequest" />
+    <output message="tns:getStationNameResponse" />
+  </operation>
+  <operation name="getShopName" parameterOrder="AreaCode TerminalCode LineCode StationCode">
+    <input message="tns:getShopNameRequest" />
+    <output message="tns:getShopNameResponse" />
+  </operation>
+</portType>
+
+<binding name="SFCardFanDbBinding" type="tns:SFCardFanDbPortType">
+  <soap:binding style="rpc"
+    transport="http://schemas.xmlsoap.org/soap/http" />
+  <operation name="getStationName">
+    <soap:operation soapAction="tns:SFCardFanDbGetAction" />
+    <input>
+      <soap:body use="encoded"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+        namespace="tns:SFCardFanDb" />
+    </input>
+    <output>
+      <soap:body use="encoded"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+        namespace="tns:SFCardFanDb" />
+    </output>
+  </operation>
+  <operation name="getShopName">
+    <soap:operation soapAction="tns:SFCardFanDbGetAction" />
+    <input>
+      <soap:body use="encoded"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+        namespace="tns:SFCardFanDb" />
+    </input>
+    <output>
+      <soap:body use="encoded"
+        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+        namespace="tns:SFCardFanDb" />
+    </output>
+  </operation>
+</binding>
+
+<service name="SFCardFanDbService">
+  <port name="SFCardFanDbPort" binding="tns:SFCardFanDbBinding">
+    <soap:address
+      location="http://www.denno.net/SFCardFan/soapserver.php" />
+  </port>
+</service>
+</definitions>
