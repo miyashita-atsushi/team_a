@@ -1,0 +1,6 @@
+@startuml
+class ProcessDBTable {
+    + ProcessNumber : int <<get>> <<set>>
+    + ProcessName : string <<get>> <<set>>
+}
+@enduml

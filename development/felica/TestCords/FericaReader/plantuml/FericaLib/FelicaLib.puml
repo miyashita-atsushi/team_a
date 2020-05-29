@@ -1,0 +1,18 @@
+@startuml
+enum SystemCode {
+    Any= 0xffff,
+    Common= 0xfe00,
+    Cyberne= 0x0003,
+    Edy= 0xfe00,
+    Suica= 0x0003,
+}
+class Felica {
+    + Felica()
+    + Dispose() : void
+    + Polling(systemcode:int) : void
+    + IDm() : byte[]
+    + PMm() : byte[]
+    + ReadWithoutEncryption(servicecode:int, addr:int) : byte[]
+}
+IDisposable <|-- Felica
+@enduml

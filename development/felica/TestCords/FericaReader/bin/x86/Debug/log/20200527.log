@@ -1,0 +1,4 @@
+INFO  2020/05/27 17:03:50, 083 [1] FericaReader.Log4netManager - MainWindow　Start
+INFO  2020/05/27 17:03:50, 091 [1] FericaReader.MainWindow - MainWindows 検索ボタンクリック
+INFO  2020/05/27 17:12:12, 187 [1] FericaReader.Log4netManager [FericaReader.MainWindow..ctor(C:\Users\takeshi\source\repos\TestCords\FericaReader\GUI\MainWindow.xaml.cs:38)]] - MainWindow　Start
+INFO  2020/05/27 17:22:08, 978 [1] [FericaReader.MainWindow..ctor(C:\Users\takeshi\source\repos\TestCords\FericaReader\GUI\MainWindow.xaml.cs:38)]] - MainWindow　Start

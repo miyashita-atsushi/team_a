@@ -1,0 +1,11 @@
+@startuml
+class CsvWriter {
+    + {static} WriteResultCsv(cardList:List<ICCard>) : void
+    + {static} WriteCalucResultCsv(cardList:List<CsvCalcResults>) : void
+}
+class SuicaMapper {
+}
+class "ClassMap`1"<T> {
+}
+CsvWriter +-- SuicaMapper
+@enduml

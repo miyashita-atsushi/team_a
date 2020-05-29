@@ -1,0 +1,6 @@
+@startuml
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+@enduml

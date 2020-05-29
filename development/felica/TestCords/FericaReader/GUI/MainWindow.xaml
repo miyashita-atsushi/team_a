@@ -1,0 +1,74 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FelicaLib"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        x:Class="FericaReader.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="836" Width="1253">
+    <Grid>
+        <TabControl x:Name="TabControlViews" Background="#FF85A392">
+            <TabItem Header="CardRead">
+                <Grid Background="#FFFFECC7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="580*"/>
+                        <ColumnDefinition Width="206*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="ButtonReadFerica" Content="Ferica読込" Margin="159,689,69,31" Click="ButtonReadFelica_Click" Grid.Column="1"/>
+                    <Label x:Name="LabelResult" Content="読込結果" Margin="46,689,171,31" Background="Black" Foreground="White" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"/>
+
+                    <Grid Grid.ColumnSpan="1" Grid.Column="0">
+                        <DataGrid x:Name="DataGridCardResult" Margin="10" Background="#FFFDD998" />
+                    </Grid>
+                    <ComboBox x:Name="ComboICCardType" Grid.Column="1" HorizontalAlignment="Left" Margin="159,642,0,0" VerticalAlignment="Top" Width="97"/>
+                    <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="159,586,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click"/>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem x:Name="TabDataView" Header="DataView" PreviewMouseLeftButtonDown="TabDataView_PreviewMouseLeftButtonDown">
+                <Grid Background="#FFFFECC7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="580*"/>
+                        <ColumnDefinition Width="206*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="319*"/>
+                        <RowDefinition Height="458*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1">
+                        <DataGrid x:Name="DataGridDBResult" Margin="10,10,0,10" Background="#FFFDD998"/>
+                    </Grid>
+                    <Grid x:Name="GridGraph" Grid.RowSpan="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0"  Margin="5,5,0,5">
+                        <oxy:PlotView x:Name="PlotViewResultGraph" DataContext="{Binding ResultsGraphView}" Model="{Binding Model}" Controller="{Binding Controller}" Margin="10" Background="#FFFDD998" />
+                    </Grid>
+                    <StackPanel Grid.Column="1">
+                        <Button x:Name="ButtonResultPeriod" Content="週集計" HorizontalAlignment="Left" Height="22" Margin="11,10,0,0" VerticalAlignment="Top" Width="80" Click="ButtonResultPeriod_Click"/>
+                        <Calendar x:Name="CalendarDaysSelect" Margin="0" Width="200" Height="165" Grid.Column="1" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <Button x:Name="ButtonDBViewMonth" Content="履歴表示" HorizontalAlignment="Left" Height="55" Margin="11,254,0,0" VerticalAlignment="Top" Width="92" Click="ButtonDBViewMonth_Click" Grid.Column="1"/>
+                    <ComboBox x:Name="ComboSelectProcess" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Width="93" Grid.Column="1" Height="22"/>
+                    <Label Content="Process種別" Grid.Column="1" HorizontalAlignment="Left" Height="19" Margin="11,203,0,0" VerticalAlignment="Top" Width="108" Padding="0"/>
+
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+    <!--<TabControl Grid.Column="1" HorizontalAlignment="Left" Height="341" Margin="0,3,0,0" VerticalAlignment="Top" Width="206" Grid.RowSpan="2">
+        <TabItem Header="月集計">
+            <Grid Background="#FFFFC55F">
+                <Button x:Name="ButtonDBViewMonth" Content="Button" HorizontalAlignment="Left" Height="29" Margin="97,259,0,0" VerticalAlignment="Top" Width="93" Click="ButtonDBViewMonth_Click"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="週集計">
+            <Grid Background="#FFFFC55F">
+                <Calendar x:Name="CalendarWeekSerch" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" SelectedDatesChanged="CalendarWeekSerch_SelectedDatesChanged"/>
+            </Grid>
+        </TabItem>
+    </TabControl>-->
+</Window>

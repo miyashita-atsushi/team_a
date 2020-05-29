@@ -1,0 +1,127 @@
+@startuml
+
+class MainWindow {
+    + MainWindow()
+}
+
+
+class WindowManager {
+    + {static} Instancs : WindowManager
+    + HistoryList : List<ICCard>
+    + resultList : List<CsvCalcResults>
+    + graphView : OxyPlot.GraphView
+
+    + ReadFelcia(felica:Felica, iCCardType:string) : void
+    + Read各種ICカード(felica:Felica) : void
+    + SearchProcesses() : List<string>
+    + AggregateResults(MonthorWeek : bool,selectTime:DateTime, selectpro :string) : void
+
+    - ViewResultGraph() : void
+    - WriteUserHistoryDB() : void
+    - AddHistryList(readdata : byte[],idm : string) : void
+    - CalcValue() : void
+    
+}
+
+abstract class ICCard {
+    + Date : string <<get>> <<set>>
+    + Terminal : string <<get>> <<set>>
+    + Process : string <<get>> <<set>>
+    + Payment : int <<get>> <<set>>
+    + Deposit : int <<get>> <<set>>
+    + Balance : int <<get>> <<set>>
+    + InStationName : string <<get>> <<set>>
+    + OutStationName : string <<get>> <<set>>
+    + IDm : string <<get>> <<set>>
+    + TransactionID : string <<get>> <<set>>
+    + Value : int <<set>>
+    # CreateTransactionID(readdata : byte[]) : void
+    + <<virtual>> AnalyzeTransaction(readdata:byte[]) : void
+    + <<virtual>> AnaryzeDateTime(date:int) : string
+}
+
+class Suica {
+    + TerminalCode : int
+    + ProcessCode : int
+    + GetStation : int
+    + InStationLineCode : int
+    + InStationCode : int
+    + OutStationLineCode : int
+    + OutStationCode : int
+    + Seq : int
+    + Region : int
+    + <<override>> AnalyzeTransaction(readdata:byte[]) : void
+    + <<override>> AnaryzeDateTime(readdate:int) : string
+}
+ 
+
+class DateBaseAccess <<static>> {
+    + {static} WhiteUserHistorySql(historyList:List<ICCard>) : void
+    + {static} MonthTotal(selectDatetime:DateTime, selectProcess:string) : List<CsvCalcResults>
+    + {static} WeekTotal(selectDatetime:DateTime, selectProcess:string) : List<CsvCalcResults>
+    + {static} GetStationName(areaCode:int, lineCode:int, stationCode:int) : string
+    - {static} WeeklyFormToDaysCalc(selectDatetime:DateTime) : Dictionary<int, List<DateTime>>
+}
+
+class Felicalib.FelicaLib {
+    + Felica()
+    + Dispose() : void
+    + Polling(systemcode:int) : void
+    + IDm() : byte[]
+    + PMm() : byte[]
+    + ReadWithoutEncryption(servicecode:int, addr:int) : byte[]
+}
+
+
+class CsvCalcResults {
+    + IDm : string <<get>> <<set>>
+    + Deposit : int <<get>> <<set>>
+    + Payment : int <<get>> <<set>>
+    + FromToDate : string <<get>> <<set>>
+    + FromDate : DateTime <<get>> <<set>>
+    + ToDate : DateTime <<get>> <<set>>
+}
+
+class CsvWriter {
+    + {static} WriteResultCsv(cardList:List<ICCard>) : void
+    + {static} WriteCalucResultCsv(cardList:List<CsvCalcResults>) : void
+}
+
+class OxyPlot.GraphView {
+    + Model : PlotModel <<get>>
+    + CsvCalcResultGraph : CalcResultGraph
+    + X : OxyPlot.Axes.DateTimeAxis <<get>> <<private set>>
+    + Y : OxyPlot.Axes.LinearAxis <<get>> <<private set>>
+    + CreateGraph(results:List<CsvCalcResults>) : void
+}
+class OxyPlot.CalcResultGraph {
+    + DepositLineSeries : OxyPlot.Series.LineSeries <<get>> <<private set>>
+    + PaymentLineSeries : OxyPlot.Series.LineSeries <<get>> <<private set>>
+    + Results : ObservableCollection<CsvCalcResults> <<get>> <<private set>>
+    + CalcResultGraph(results:List<CsvCalcResults>)
+}
+
+class log4net.Log4netManager {
+    + Instance : Log4netManager
+    + logger : ILog 
+    - rootLogger : Logger
+    - LogLevelDic : Dictionary<string, Level>
+    + Log4netManager()
+}
+
+note "全クラスで使用" as comment
+log4net .. comment
+
+MainWindow "1"*--"1" WindowManager
+WindowManager "1"<--"1" OxyPlot.GraphView
+WindowManager "1"<--"*" Suica
+WindowManager "1"<-left-"1" Felicalib.FelicaLib
+WindowManager "1"<-right-"*" CsvCalcResults
+WindowManager "1"<--"1" CsvWriter
+CsvCalcResults "*"-->"1" CsvWriter
+Suica -ri-|> ICCard
+DateBaseAccess "1"-->"1" WindowManager 
+OxyPlot.CalcResultGraph "1"-do-*"1" OxyPlot.GraphView
+OxyPlot.CalcResultGraph "1"<-up-"*" CsvCalcResults
+
+@enduml

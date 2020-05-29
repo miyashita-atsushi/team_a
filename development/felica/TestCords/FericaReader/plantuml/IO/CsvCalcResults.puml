@@ -1,0 +1,10 @@
+@startuml
+class CsvCalcResults {
+    + IDm : string <<get>> <<set>>
+    + Deposit : int <<get>> <<set>>
+    + Payment : int <<get>> <<set>>
+    + FromToDate : string <<get>> <<set>>
+}
+CsvCalcResults --> "FromDate" DateTime
+CsvCalcResults --> "ToDate" DateTime
+@enduml

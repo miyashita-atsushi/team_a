@@ -1,0 +1,10 @@
+@startuml
+class WindowManager {
+    + ReadFelcia(felica:Felica, iCCardType:string) : void
+    + SearchProcesses() : List<string>
+}
+class "List`1"<T> {
+}
+WindowManager o-> "Instance" WindowManager
+WindowManager o-> "HistoryList<ICCard>" "List`1"
+@enduml

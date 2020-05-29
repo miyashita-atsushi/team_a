@@ -1,0 +1,19 @@
+@startuml
+class Suica {
+    + <<const>> SERVICE_SUICA_INOUT : int = 0x108f
+    + <<const>> SERVICE_SUICA_HISTORY : int = 0x090f
+    + TerminalCode : int
+    + ProcessCode : int
+    + GetStation : int
+    + InStationLineCode : int
+    + InStationCode : int
+    + OutStationLineCode : int
+    + OutStationCode : int
+    + Seq : int
+    + Region : int
+    + Suica()
+    + <<override>> AnalyzeTransaction(data:byte[]) : void
+    + <<override>> AnaryzeDateTime(date:int) : string
+}
+ICCard <|-- Suica
+@enduml

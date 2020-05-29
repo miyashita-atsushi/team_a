@@ -1,0 +1,213 @@
+@startuml
+class App <<partial>> {
+}
+Application <|-- App
+class GraphView {
+    + Init() : void
+    + CreateGraph(results:List<CsvCalcResults>) : void
+}
+class CalcResultGraph {
+    + CalcResultGraph()
+    + CalcResultGraph(results:List<CsvCalcResults>)
+}
+class "ObservableCollection`1"<T> {
+}
+GraphView o-> "Model" PlotModel
+GraphView o-> "Controller" PlotController
+GraphView --> "CsvCalcResultGraph" CalcResultGraph
+GraphView +-- CalcResultGraph
+CalcResultGraph --> "Results<CsvCalcResults>" "ObservableCollection`1"
+class Log4netManager {
+    + {static} GetInstance() : Log4netManager
+    + LevelSet() : void
+    + ReadConfig() : void
+}
+Log4netManager --> "logger" ILog
+class WindowManager {
+    + ReadFelcia(felica:Felica, iCCardType:string) : void
+    + SearchProcesses() : List<string>
+}
+class "List`1"<T> {
+}
+WindowManager o-> "Instance" WindowManager
+WindowManager o-> "HistoryList<ICCard>" "List`1"
+abstract class ICCard {
+    + Date : string <<get>> <<set>>
+    + Terminal : string <<get>> <<set>>
+    + Process : string <<get>> <<set>>
+    + Payment : int <<get>> <<set>>
+    + Deposit : int <<get>> <<set>>
+    + Balance : int <<get>> <<set>>
+    + InStationName : string <<get>> <<set>>
+    + OutStationName : string <<get>> <<set>>
+    + IDm : string <<get>> <<set>>
+    + TransactionID : string <<get>> <<set>>
+    + Value : int <<set>>
+    + <<virtual>> AnalyzeTransaction(data:byte[]) : void
+    + <<virtual>> AnaryzeDateTime(date:int) : string
+}
+class Suica {
+    + <<const>> SERVICE_SUICA_INOUT : int = 0x108f
+    + <<const>> SERVICE_SUICA_HISTORY : int = 0x090f
+    + TerminalCode : int
+    + ProcessCode : int
+    + GetStation : int
+    + InStationLineCode : int
+    + InStationCode : int
+    + OutStationLineCode : int
+    + OutStationCode : int
+    + Seq : int
+    + Region : int
+    + Suica()
+    + <<override>> AnalyzeTransaction(data:byte[]) : void
+    + <<override>> AnaryzeDateTime(date:int) : string
+}
+ICCard <|-- Suica
+class ProcessDBTable {
+    + ProcessNumber : int <<get>> <<set>>
+    + ProcessName : string <<get>> <<set>>
+}
+enum SystemCode {
+    Any= 0xffff,
+    Common= 0xfe00,
+    Cyberne= 0x0003,
+    Edy= 0xfe00,
+    Suica= 0x0003,
+}
+class Felica {
+    + Felica()
+    + Dispose() : void
+    + Polling(systemcode:int) : void
+    + IDm() : byte[]
+    + PMm() : byte[]
+    + ReadWithoutEncryption(servicecode:int, addr:int) : byte[]
+}
+IDisposable <|-- Felica
+class MainWindow <<partial>> {
+    + MainWindow()
+}
+class "List`1"<T> {
+}
+Window <|-- MainWindow
+MainWindow o-> "graphView" GraphView
+MainWindow --> "ResultList<CsvCalcResults>" "List`1"
+class CsvCalcResults {
+    + IDm : string <<get>> <<set>>
+    + Deposit : int <<get>> <<set>>
+    + Payment : int <<get>> <<set>>
+    + FromToDate : string <<get>> <<set>>
+}
+CsvCalcResults --> "FromDate" DateTime
+CsvCalcResults --> "ToDate" DateTime
+class CsvWriter {
+    + {static} WriteResultCsv(cardList:List<ICCard>) : void
+    + {static} WriteCalucResultCsv(cardList:List<CsvCalcResults>) : void
+}
+class SuicaMapper {
+}
+class "ClassMap`1"<T> {
+}
+CsvWriter +-- SuicaMapper
+class IO <<static>> {
+    + {static} WhiteUserHistorySql(historyList:List<ICCard>) : void
+    + {static} MonthTotal(selectDatetime:DateTime, selectProcess:string) : List<CsvCalcResults>
+    + {static} WeekTotal(selectDatetime:DateTime, selectProcess:string) : List<CsvCalcResults>
+    + {static} GetStationName(areaCode:int, lineCode:int, stationCode:int) : string
+}
+class Resources {
+}
+class Settings <<sealed>> <<partial>> {
+    + UserDBFilePath : string <<get>>
+    + ProcessDBFilePath : string <<get>>
+    + CsvResultFolderName : string <<get>> <<set>>
+    + StationDBFilePath : string <<get>> <<set>>
+    + log4netConfigFilePath : string <<get>> <<set>>
+    + LogLevel : string <<get>> <<set>>
+    + LogFilePath : string <<get>> <<set>>
+}
+Settings --> "Default" Settings
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+@enduml

@@ -1,0 +1,10 @@
+C:\Users\takeshi\source\repos\TestCords\SoapTest\bin\Debug\SoapTest.exe.config
+C:\Users\takeshi\source\repos\TestCords\SoapTest\bin\Debug\SoapTest.exe
+C:\Users\takeshi\source\repos\TestCords\SoapTest\bin\Debug\SoapTest.pdb
+C:\Users\takeshi\source\repos\TestCords\SoapTest\obj\Debug\SoapTest.csprojAssemblyReference.cache
+C:\Users\takeshi\source\repos\TestCords\SoapTest\obj\Debug\SoapTest.Form1.resources
+C:\Users\takeshi\source\repos\TestCords\SoapTest\obj\Debug\SoapTest.Properties.Resources.resources
+C:\Users\takeshi\source\repos\TestCords\SoapTest\obj\Debug\SoapTest.csproj.GenerateResource.cache
+C:\Users\takeshi\source\repos\TestCords\SoapTest\obj\Debug\SoapTest.csproj.CoreCompileInputs.cache
+C:\Users\takeshi\source\repos\TestCords\SoapTest\obj\Debug\SoapTest.exe
+C:\Users\takeshi\source\repos\TestCords\SoapTest\obj\Debug\SoapTest.pdb

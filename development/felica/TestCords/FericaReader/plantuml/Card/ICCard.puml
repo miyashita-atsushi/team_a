@@ -1,0 +1,17 @@
+@startuml
+abstract class ICCard {
+    + Date : string <<get>> <<set>>
+    + Terminal : string <<get>> <<set>>
+    + Process : string <<get>> <<set>>
+    + Payment : int <<get>> <<set>>
+    + Deposit : int <<get>> <<set>>
+    + Balance : int <<get>> <<set>>
+    + InStationName : string <<get>> <<set>>
+    + OutStationName : string <<get>> <<set>>
+    + IDm : string <<get>> <<set>>
+    + TransactionID : string <<get>> <<set>>
+    + Value : int <<set>>
+    + <<virtual>> AnalyzeTransaction(data:byte[]) : void
+    + <<virtual>> AnaryzeDateTime(date:int) : string
+}
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+class GraphView {
+    + Init() : void
+    + CreateGraph(results:List<CsvCalcResults>) : void
+}
+class CalcResultGraph {
+    + CalcResultGraph()
+    + CalcResultGraph(results:List<CsvCalcResults>)
+}
+class "ObservableCollection`1"<T> {
+}
+GraphView o-> "Model" PlotModel
+GraphView o-> "Controller" PlotController
+GraphView --> "CsvCalcResultGraph" CalcResultGraph
+GraphView +-- CalcResultGraph
+CalcResultGraph --> "Results<CsvCalcResults>" "ObservableCollection`1"
+@enduml

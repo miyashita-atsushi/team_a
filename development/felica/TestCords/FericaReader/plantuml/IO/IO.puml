@@ -1,0 +1,8 @@
+@startuml
+class IO <<static>> {
+    + {static} WhiteUserHistorySql(historyList:List<ICCard>) : void
+    + {static} MonthTotal(selectDatetime:DateTime, selectProcess:string) : List<CsvCalcResults>
+    + {static} WeekTotal(selectDatetime:DateTime, selectProcess:string) : List<CsvCalcResults>
+    + {static} GetStationName(areaCode:int, lineCode:int, stationCode:int) : string
+}
+@enduml

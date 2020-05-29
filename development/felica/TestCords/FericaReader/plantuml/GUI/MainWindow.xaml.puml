@@ -1,0 +1,10 @@
+@startuml
+class MainWindow <<partial>> {
+    + MainWindow()
+}
+class "List`1"<T> {
+}
+Window <|-- MainWindow
+MainWindow o-> "graphView" GraphView
+MainWindow --> "ResultList<CsvCalcResults>" "List`1"
+@enduml

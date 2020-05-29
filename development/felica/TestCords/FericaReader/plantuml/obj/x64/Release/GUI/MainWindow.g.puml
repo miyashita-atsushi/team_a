@@ -1,0 +1,6 @@
+@startuml
+class MainWindow <<partial>> {
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+@enduml

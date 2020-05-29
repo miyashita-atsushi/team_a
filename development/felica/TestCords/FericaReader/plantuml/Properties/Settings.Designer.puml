@@ -1,0 +1,12 @@
+@startuml
+class Settings <<sealed>> <<partial>> {
+    + UserDBFilePath : string <<get>>
+    + ProcessDBFilePath : string <<get>>
+    + CsvResultFolderName : string <<get>> <<set>>
+    + StationDBFilePath : string <<get>> <<set>>
+    + log4netConfigFilePath : string <<get>> <<set>>
+    + LogLevel : string <<get>> <<set>>
+    + LogFilePath : string <<get>> <<set>>
+}
+Settings --> "Default" Settings
+@enduml

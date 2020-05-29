@@ -1,0 +1,8 @@
+@startuml
+class Log4netManager {
+    + {static} GetInstance() : Log4netManager
+    + LevelSet() : void
+    + ReadConfig() : void
+}
+Log4netManager --> "logger" ILog
+@enduml
